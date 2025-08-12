@@ -6,6 +6,7 @@
 3. [Servlet]()
 4. [Tomcat의 동작 순서](#Tomcat의-동작-순서)
 5. [MVC]()
+6. [빌드 도구](#빌드-도구)
 
 
 #### Tomcat의 동작 순서
@@ -32,3 +33,24 @@ Reference : https://netflixtechblog.com/tuning-tomcat-for-a-high-throughput-fail
 ---
 1. [IoC, DI, AOP](https://drive.google.com/file/d/1_gsWZYOrFJUKD-br1loYv8xpsyYrHisF/view?usp=sharing)
 2. [Servlet, Architecture, Pattern](https://github.com/amazon7737/Spring-comes-who/blob/main/1%EC%A3%BC%EC%B0%A8/servlet%2Carchitecture%2Cpattern.png)
+
+
+#### 빌드 도구
+
+
+##### 메이븐(Maven)이 빌드할때 동작하는 순서
+
+![image](https://raw.githubusercontent.com/amazon7737/spring-framework-read-docs/refs/heads/main/images/maven-default-cycle.png)
+
+
+Default 라이프 사이클 절차
+
+`validate` : 프로젝트가 정확하고 필요한 정보가 모두 있는지 확인
+`compile` : 프로젝트의 소스코드를 컴파일
+`test` : 컴파일된 소스코드를 테스트
+`package` : 컴파일된 코드를 가져와서 JAR 같은 배포 가능한 형식으로 패키징
+`verify` : 품질 기준이 충족되는지 확인하기 위해 검사 시행
+`install` : 로컬 저장소에 패키지 설치해서 로컬의 다른 프로젝트에서 종속성으로 사용
+`deploy` : 원격저장소로 복사
+
+
