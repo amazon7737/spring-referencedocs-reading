@@ -13,7 +13,7 @@
 
 Tomcat에는 connection을 수락하는 accept thread가 있습니다. OS와 클라이언트간에 TCP 핸드셰이크를 이룰때, 연결을 보관하는 큐가 하나이거나 여러개일 수 있다.
 
-img
+![image](https://raw.githubusercontent.com/amazon7737/spring-framework-read-docs/refs/heads/main/images/tomcat-draw.png)
 
 1. TCP connection 으로 클라이언트가 요청
 2. TCP 핸드셰이크가 완료되지 않은 미완료 연결을 보관
