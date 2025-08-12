@@ -45,12 +45,18 @@ Reference : https://netflixtechblog.com/tuning-tomcat-for-a-high-throughput-fail
 
 Default 라이프 사이클 절차
 
-`validate` : 프로젝트가 정확하고 필요한 정보가 모두 있는지 확인
-`compile` : 프로젝트의 소스코드를 컴파일
-`test` : 컴파일된 소스코드를 테스트
-`package` : 컴파일된 코드를 가져와서 JAR 같은 배포 가능한 형식으로 패키징
-`verify` : 품질 기준이 충족되는지 확인하기 위해 검사 시행
-`install` : 로컬 저장소에 패키지 설치해서 로컬의 다른 프로젝트에서 종속성으로 사용
-`deploy` : 원격저장소로 복사
+`validate` : 프로젝트가 정확하고 필요한 정보가 모두 있는지 확인 <br/>
+`compile` : 프로젝트의 소스코드를 컴파일 <br/>
+`test` : 컴파일된 소스코드를 테스트 <br/>
+`package` : 컴파일된 코드를 가져와서 JAR 같은 배포 가능한 형식으로 패키징 <br/>
+`verify` : 품질 기준이 충족되는지 확인하기 위해 검사 시행 <br/>
+`install` : 로컬 저장소에 패키지 설치해서 로컬의 다른 프로젝트에서 종속성으로 사용 <br/>
+`deploy` : 원격저장소로 복사 <br/>
+
+
+Reference
+- https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html
+- https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Built-in_Lifecycle_Bindings
+- https://dev.to/mohamed_el_laithy/maven-lifecycle-simplified-animated-visual-guide-575
 
 
