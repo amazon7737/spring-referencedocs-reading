@@ -7,7 +7,7 @@
 4. [Tomcat의 동작 순서](#Tomcat의-동작-순서)
 5. [MVC]()
 6. [빌드 도구](#빌드-도구)
-
+7. [그리며 연습했던 draw io 파일들](#Draw)
 
 #### Tomcat의 동작 순서
 ---
@@ -26,13 +26,6 @@ Tomcat에는 connection을 수락하는 accept thread가 있습니다. OS와 클
 정리: 내부 대기 큐가 웹서버내에서 이루어지는게 아니라, 요청을 받는 OS레벨에서의 요청 대기 큐가 있다. 여기에는 TCP 미연결을 보관하는 큐와 TCP 연결 성공으로 인해서 애플리케이션이 연결된 세션을 가져갈 수 있도록 하는 큐 이렇게 2개가 보관되어있고 이것은 소켓자체에서 이루는 것이다.
 
 Reference : https://netflixtechblog.com/tuning-tomcat-for-a-high-throughput-fail-fast-system-e4d7b2fc163f
-
-
-
-# draw
----
-1. [IoC, DI, AOP](https://drive.google.com/file/d/1_gsWZYOrFJUKD-br1loYv8xpsyYrHisF/view?usp=sharing)
-2. [Servlet, Architecture, Pattern](https://github.com/amazon7737/Spring-comes-who/blob/main/1%EC%A3%BC%EC%B0%A8/servlet%2Carchitecture%2Cpattern.png)
 
 
 #### 빌드 도구
@@ -59,4 +52,11 @@ Reference
 - https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Built-in_Lifecycle_Bindings
 - https://dev.to/mohamed_el_laithy/maven-lifecycle-simplified-animated-visual-guide-575
 
+
+
+
+# draw
+---
+1. [IoC, DI, AOP](https://drive.google.com/file/d/1_gsWZYOrFJUKD-br1loYv8xpsyYrHisF/view?usp=sharing)
+2. [Servlet, Architecture, Pattern](https://github.com/amazon7737/Spring-comes-who/blob/main/1%EC%A3%BC%EC%B0%A8/servlet%2Carchitecture%2Cpattern.png)
 
