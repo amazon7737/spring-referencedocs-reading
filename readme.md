@@ -15,7 +15,7 @@ Tomcat에는 connection을 수락하는 accept thread가 있습니다. OS와 클
 
 img
 
-1. [[TCP connection]] 으로 클라이언트가 요청
+1. TCP connection 으로 클라이언트가 요청
 2. TCP 핸드셰이크가 완료되지 않은 미완료 연결을 보관
 3. 완료되면 연결은 애플리케이션에서 사용할 수 있는 완료된 연결 큐로 이동 (acceptCount 매개변수가 이 큐의 크기를 제어하는데 사용)
 4. Tomcat 의 accept thread는 처리 가능한 워커쓰레드가 스레드풀 유후 상태인지 확인
