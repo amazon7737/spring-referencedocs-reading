@@ -53,6 +53,36 @@ Reference
 - https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Built-in_Lifecycle_Bindings
 - https://dev.to/mohamed_el_laithy/maven-lifecycle-simplified-animated-visual-guide-575
 
+#### 네트워크
+
+##### TCP/IP 송수신 동작 순서
+
+![image](https://raw.githubusercontent.com/amazon7737/spring-framework-read-docs/refs/heads/main/images/tcp-connection-seq.png)
+
+
+서버는 기본적으로 Process라고 할 수 있고, Socket이 열려있을 것이다. Process는 Socket에게 할수있는 권한은 RWX 가 있다. Read, Send, Launch 여기서 Send를 한다고 가정하겠다.
+
+전송하고자 하는 파일이 1.4MB라고할때, 먼저 HDD에서 파일을 읽어들인다. File System이 있을것이고 Server에 할당된 Memory가 64KB라고할때 파일을 쪼개어 64KB조각을 만든다. 그리고 Socket이 TCP 버퍼쪽으로 COPY 시킨다. 이것을 읽어들여서 가져다주는 것이 Buffered I/O이다. 적재되어있는 조각을 IP로 넘기는데 이때 Segment 라는 단위로 쪼개어 보낸다. 64KB 조각에서 더 쪼개는것임.
+
+IP에 들어온 Segment는 Driver를 통해서 나가 Packet에 담긴다. 그리고 L2영역인 NIC로 나갈때는 Frame으로 들어간다. 하나의 Packet이 Frame으로 또 적재되는 것이다.
+
+그리고 Frame을 목적지를 향해 전송시키는데, 이때 여러번 Frame을 갈아타면서 목적지에 도달할 수 있다.
+
+수신자에게 전달되었다. 수신자에 도달하자마자 Frame에서 Packet을 꺼내어 NIC를 넘어간다. (DeCapsulation)
+
+그리고 IP를 거치며, Packet안에 Segment를 꺼내고 그걸 TCP 버퍼에 저장시킨다. 이걸 성공적으로 적재하게되면 서버에게 ACK 패킷을 전송한다.
+
+서버는 ACK 패킷을 받으면, 전송했던 데이터가 잘 전달되었다고 판단하고, 다음 데이터를 전달한다.
+
+이때, TCP 버퍼는 Window Size 라는 여유공간이 있다. ACK 패킷에는 여유공간인 Window Size를 명시하여 보내는데 만약 여유공간이 부족하다고 서버가 판단하면 대기(Wait)가 걸린다. 여유공간이 있을때까지 판단한다.
+
+수신자 측에서는 여유공간이 만들어질려면 적재된 Segment를 Socket 쪽으로 올려줘야한다 이때 일어나는것이 File I/O 이다. 데이터를 퍼올리는 속도가 빠를수록 TCP 속도에 판결이 나는 것이다.
+
+** Window Size가 만약 부족하면 서버는 대기가 걸리는데, 여유공간이 있을때까지 어떻게 판단하지?
+서버는 더이상 데이터를 보내지 않는다. 서버에서는 Persist Timer를 시작한다. 일정 시간 후 Window Probe 패킷을 전송하며 수신자는 Window Probe에 대해 반드시 ACK 응답을 주어야 한다.
+Window Size가 여전히 0이면 다시 타이머 재시작, 0이 아니면 전송을 재개한다.
+(Window Probe는 1바이트 크기의 특수 세그먼트)
+
 
 
 
