@@ -57,7 +57,9 @@ Reference
 - https://dev.to/mohamed_el_laithy/maven-lifecycle-simplified-animated-visual-guide-575
 
 #### 네트워크
+---
 
+#### TCP
 ##### TCP/IP 송수신 동작 순서
 
 ![image](https://raw.githubusercontent.com/amazon7737/spring-framework-read-docs/refs/heads/main/images/tcp-connection-seq.png)
