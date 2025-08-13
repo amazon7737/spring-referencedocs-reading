@@ -9,7 +9,9 @@
 5. [MVC]()
 6. [빌드 도구](#빌드-도구)
 7. [네트워크](#네트워크)
-8. [그리며 연습했던 draw io 파일들](#Draw)
+   - [TCP](#TCP/IP-송수신-동작-순서)
+   - [HTTP](#HTTP)
+9. [그리며 연습했던 draw io 파일들](#Draw)
 
 #### Tomcat의 동작 순서
 ---
@@ -84,6 +86,11 @@ IP에 들어온 Segment는 Driver를 통해서 나가 Packet에 담긴다. 그�
 Window Size가 여전히 0이면 다시 타이머 재시작, 0이 아니면 전송을 재개한다.
 (Window Probe는 1바이트 크기의 특수 세그먼트)
 
+#### HTTP
+
+##### HTTP Method
+
+![image](https://raw.githubusercontent.com/amazon7737/spring-framework-read-docs/refs/heads/main/images/HTTP-Method.png)
 
 
 
