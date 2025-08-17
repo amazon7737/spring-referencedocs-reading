@@ -95,7 +95,87 @@ Window Size가 여전히 0이면 다시 타이머 재시작, 0이 아니면 전�
 
 ![image](https://raw.githubusercontent.com/amazon7737/spring-framework-read-docs/refs/heads/main/images/HTTP-Method.png)
 
+#### JPA(Java Persistence API)
 
+직접 JDBC를 구현하면, SQL에 의존하게 되는 문제를 해결하기 위해 JPA를 사용하게 되었다.
+
+객체를 자동으로 데이터베이스 테이블에 매핑함으로써, 객체를 통해서 원하는 데이터들을 제어할 수 있다.
+
+Spring Data JPA는 DAO(Data Access Object) 를 자동으로 생성하여 주는 기능들을 포함하고, CRUD 메서드를 제공한다.
+
+![image](https://raw.githubusercontent.com/amazon7737/spring-docs-and-notes/refs/heads/main/images/jpa-2.png)
+
+
+*User 객체를 통해서 다양한 상태를 보여주는 과정을 설명하면,*
+
+- User 객체 저장 (persist)
+	- 초기상태는 비영속(new/transient)
+		- 새로 만든 User 객체는 아직 영속성 컨텍스트와 관련이 없음.
+	- `persist(user)`
+		- 엔티티를 영속성 컨텍스트에 등록 (비영속 -> 영속)
+		- 이후 트랜잭션을 커밋하거나 `flush()` 를 호출하면 DB에 INSERT 쿼리 발생
+		- 영속(managed) 상태가 되어 JPA가 객체의 변경을 추적
+
+- User 객체 조회 (find, JPQL)
+	- 동작은 `find(User.class, id)` 또는 JPQL을 통해서 진행
+	- DB에서 해당 User를 조회하여 영속성 컨텍스트에 User 인스턴스가 없으면 DB에서 불러와 영속(managed) 상태로 만듦.
+	- 이미 영속 컨텍스트에 있다면 캐시에서 반환.
+
+- User 객체 수정
+	- 조건 : 영속(managed) 상태인 User 객체의 필드 값 변경
+	- 동작 : 단순히 객체의 값을 변경하면 JPA가 자동으로 변경 감지(dirty checking)
+		- 트랜잭션 종료 시점 또는 `flush()` 호출 시 변경된 내용이 DB에 UPDATE 쿼리로 반영
+	- 별도의 메서드 호출 없이 자동으로 수정 내용이 DB에 반영
+
+- User 객체 삭제 (remove)
+	- 동작 : `remove(user)`
+		- 영속(managed) 상태에서 삭제(remove) 메서드 호출 시, 삭제(remove) 상태로 전이
+		- flush() 또는 트랜잭션 커밋 시점에 DB에 DELETE 쿼리가 실행되어 삭제.
+
+- 준영속(detached) 상태 및 (detach, clear, close, merge)
+- 동작:
+	- `detach(user)` , `clear()` , `close()` 메서드를 사용하면 영속 상태의 User가 준영속(detached)이 됨.
+	- 더 이상 JPA의 변경감지 및 DB 반영이 일어나지 않음
+	- detached 상태의 User를 다시 DB와 동기화하고 싶으면 `merge(user)` 을 사용하여 managed 상태로 전환시킴.
+
+** detached 되면 영속성 컨텍스트에서 제거가 된 상태인가?
+
+맞습니다. detached(준영속) 상태가 되면 해당 엔티티는 영속성 컨텍스트에서 제거된 상태입니다.
+즉, 영속성 컨텍스트가 더 이상 해당 엔티티를 관리하지 않기 때문에, 필드 값을 변경해도 DB에 반영되지 않습니다.
+
+- detached = 영속성 컨텍스트에서 제거되어 더 이상 관리받지 않는 상태
+
+
+
+![image](https://raw.githubusercontent.com/amazon7737/spring-docs-and-notes/refs/heads/main/images/jpa.png)
+
+
+```java
+// 1. EntityManagerFactory 생성 (애플리케이션 시작 시 1회)
+EntityManagerFactory emf = Persistence.createEntityManagerFactory("unitName");
+
+// 2. 클라이언트 요청 혹은 트랜잭션 단위마다 EntityManager 생성
+EntityManager em = emf.createEntityManager();
+
+// 3. EntityTransaction 흭득 및 트랜잭션 시작
+EntityTransaction tx = em.getTransaction();
+tx.begin();
+
+// 4. 비즈니스 로직 수행 (영속성 컨텍스트에 객체 저장, 조회 등)
+em.persist(user);
+
+// 5. 트랜잭션 커밋 혹은 롤백
+tx.commit();
+
+// 6. EntityManager 종료(반납)
+em.close();
+
+// 7. 애플리케이션 종료 시 EntityManagerFactory 종료
+emf.close();
+
+```
+
+![jpa-draw](https://drive.google.com/drive/u/0/folders/1u43ig9C-r4RutZ-GVDw0_Tk96cJPKwzP)
 
 # draw
 ---
