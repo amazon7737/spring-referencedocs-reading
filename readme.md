@@ -7,7 +7,7 @@
 3. [Servlet]()
 4. [Tomcat의 동작 순서](#Tomcat의-동작-순서)
 5. [MVC]()
-6. [JPA](#JPA(Java-Persistence-API))
+6. [JPA](#JPA)
 7. [빌드 도구](#빌드-도구)
 8. [Logging](https://github.com/amazon7737/spring-docs-and-notes/blob/main/spring-starter-logging/logback.md)
 9. [네트워크](#네트워크)
@@ -96,7 +96,8 @@ Window Size가 여전히 0이면 다시 타이머 재시작, 0이 아니면 전�
 
 ![image](https://raw.githubusercontent.com/amazon7737/spring-framework-read-docs/refs/heads/main/images/HTTP-Method.png)
 
-#### JPA(Java Persistence API)
+#### JPA
+(Java Persistence API)
 
 직접 JDBC를 구현하면, SQL에 의존하게 되는 문제를 해결하기 위해 JPA를 사용하게 되었다.
 
