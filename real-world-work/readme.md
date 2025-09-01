@@ -42,7 +42,7 @@
 [3] 코드 리팩터링(중복을 제거) <br/>
 
 
-- [[@Mock은 언제쓸까?]]
+- [@Mock은 언제쓸까?](https://github.com/amazon7737/spring-referencedocs-reading/blob/main/real-world-work/mock.md)
 - 통합테스트를 구성할때 주의해야하는 부분
   - [Spring Guite - 테스트 전략 , Yun님](https://cheese10yun.github.io/spring-guide-test-1/)
 
