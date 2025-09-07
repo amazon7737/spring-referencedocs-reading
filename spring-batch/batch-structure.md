@@ -35,6 +35,12 @@ public Step myStep(JobRepository repo, PlatformTransactionManager tm) {
 ```
 - `itemReader.read()`가 반복 호출되어서 Chunk 크기 만큼 데이터를 모은다.
 - `itemWriter.write()`는 반복 호출되지 않고 chunk size가 10이고 reader가 모아둔 아이템이 10개라고 하면 한번에 리스트를 받아서 처리한다.
+
+##### chunk 단위로 트랜잭션이 동작하네?
+그렇다면 100개 아이템을 배치처리를 한다고 하고 chunk 단위가 10이라고하면 트랜잭션을 10개로 쪼개서 동작을 한다.
+만약 40-50개 처리중 중간에 에러가 발생하면 앞에 배치처리해둔 작업 아이템들은 롤백처리가 된다.
+작업 상황에 맞게 chunk size 설정이 중요하다는 것을 알 수 있다.
+
 ### 정리
 스프링 배치 아키텍처 구조를 보면, Step 단위에서 반복적으로 `read()` 메서드로 데이터를 읽고 필요 시 가공하여 batch로 처리하는 구조이다.
 이후 Chunk 처리가 끝나면 트랜잭션을 커밋할지 롤백할지 결정한다.
