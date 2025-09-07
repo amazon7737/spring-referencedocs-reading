@@ -30,6 +30,13 @@ public DataSourceTransactionManager transactionManager(DataSource dataSource) {
   - JPA 환경에서 EntityManagerFactory를 사용하여 트랜잭션을 관리하는 매니저이다.
   - JPA 엔티티의 상태를 관리하고 영속성 컨텍스트 내에서 트랜잭션을 통제한다.
   - `DataSourceTransactionManager` 보다 무거움, JPA 환경에서 필수적으로 필요한존재
+ 
+```java
+@Bean
+public JpaTransactionManager transactionManager(EntityManagerFactory emf) {
+    return new JpaTransactionManager(emf);
+}
+```
 
 ### 정리
 
