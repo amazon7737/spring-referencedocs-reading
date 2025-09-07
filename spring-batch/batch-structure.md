@@ -34,7 +34,7 @@ public Step myStep(JobRepository repo, PlatformTransactionManager tm) {
 }
 ```
 - `itemReader.read()`가 반복 호출되어서 Chunk 크기 만큼 데이터를 모은다.
-
+- `itemWriter.write()`는 반복 호출되지 않고 chunk size가 10이고 reader가 모아둔 아이템이 10개라고 하면 한번에 리스트를 받아서 처리한다.
 ### 정리
 스프링 배치 아키텍처 구조를 보면, Step 단위에서 반복적으로 `read()` 메서드로 데이터를 읽고 필요 시 가공하여 batch로 처리하는 구조이다.
 이후 Chunk 처리가 끝나면 트랜잭션을 커밋할지 롤백할지 결정한다.
