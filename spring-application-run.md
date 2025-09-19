@@ -16,7 +16,11 @@
 ### TomcatWebServer
 
 - HTTP 요청이 들어올때, 먼저 OS레벨에서 TCP 연결을 받아들인다.
-- Apache 문서에 확인해보면, 
+
+<img width="1454" height="96" alt="image" src="https://github.com/user-attachments/assets/0f0b0ce4-50c4-4fd6-962f-80984b277a67" />
+
+- Apache 문서에 확인해보면, OS 레벨에서 accept 처리하는 것을 확인할 수 있다.
+  - https://tomcat.apache.org/tomcat-9.0-doc/config/http.html#Common_Attributes
 
 <img width="636" height="244" alt="image" src="https://github.com/user-attachments/assets/a38d1cb7-c63c-45b3-b88e-9a09439062d1" />
 
