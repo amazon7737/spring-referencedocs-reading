@@ -49,7 +49,7 @@
 - 사용가능하지 않은 경우, 활성 스레드 수가 maxThreads보다 작으면 워커 스레드를 생성한다.
 - 그렇지 않으면, 워커 스레드가 사용 가능해질때까지 기다린다.
 
-<img width="1206" height="690" alt="image" src="https://github.com/user-attachments/assets/1e926c26-6afd-40b8-8d97-6539fda9aa7f" />
+<img width="1202" height="678" alt="image" src="https://github.com/user-attachments/assets/bb32c9c3-d3a8-4fc9-bc3d-fb0d0bb75362" />
 
 - 워커 스레드는 연결에서 입력을 읽고, 요청을 처리하고, 클라이언트에 응답을 보내는 실제 작업을 수행한다.
 - 연결이 유지되지 않으면 연결을 종료하고 빈 스레드 풀에 저장된다.
