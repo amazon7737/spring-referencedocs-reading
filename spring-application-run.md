@@ -55,6 +55,7 @@
 
 
 <img width="1450" height="836" alt="image" src="https://github.com/user-attachments/assets/1ef87288-f4d4-4439-9d92-167e7acb156b" />
+
 - accept된 연결을 내부적으로 해당 소켓을 WorkerThread에게 넘긴다.
 - WorkerThread는 소켓의 HTTP 요청 데이터를 읽고, 비즈니스 로직 실행을 담당한다.
   
