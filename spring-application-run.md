@@ -64,3 +64,9 @@
   - 연결 유지 상태인 경우, 연결에 더 많은 데이터가 있을때까지 기다린다.
   - keepAliveTimeout까지 데이터를 사용할 수 없으면 연결을 종료하고 빈 스레드 풀에 저장된다.
 
+### 정리
+
+<img width="1635" height="635" alt="image" src="https://github.com/user-attachments/assets/5bdf7eeb-9464-4270-b29a-aa4610873e7f" />
+
+- 클라이언트에게 요청을 받아, TCP 연결을 완료하고 Tomcat이 요청을 처리하는 과정을 살펴보았다. 다음은 워커 쓰레드가 요청을 받아 실제로 Spring 에서 어떤 흐름으로 작동하는지 알아보겠다.
+-> Spring MVC
