@@ -38,7 +38,21 @@
 
 - TCP 연결이 완료된 요청은 애플리케이션이 사용할 수 있도록 완료된 연결 큐로 이동한다.
 
-<img width="1956" height="679" alt="image" src="https://github.com/user-attachments/assets/585ad2f0-8191-41e2-a8d6-8c9a8f5a1838" />
+<img width="1456" height="852" alt="image" src="https://github.com/user-attachments/assets/c9c93b71-2e3d-489c-8a2d-c072a8d66f89" />
 
 - Tomcat의 수락자 스레드(Accept Thread)는 완료된 연결 대기열에서 연결을 수락한다.
+
+<img width="1453" height="820" alt="image" src="https://github.com/user-attachments/assets/bfc0773f-083c-44a5-9477-3f6601a84faa" />
+
+- Tomcat에는 워커스레드를 모아둔 스레드 풀이 존재한다.
+- 사용 가능한 스레드풀에 워커스레드가 있는지 확인한다.
+- 사용가능하지 않은 경우, 활성 스레드 수가 maxThreads보다 작으면 워커 스레드를 생성한다.
+- 그렇지 않으면, 워커 스레드가 사용 가능해질때까지 기다린다.
+
+<img width="1206" height="690" alt="image" src="https://github.com/user-attachments/assets/1e926c26-6afd-40b8-8d97-6539fda9aa7f" />
+
+- 워커 스레드는 연결에서 입력을 읽고, 요청을 처리하고, 클라이언트에 응답을 보내는 실제 작업을 수행한다.
+- 연결이 유지되지 않으면 연결을 종료하고 빈 스레드 풀에 저장된다.
+- 연결 유지 상태인 경우, 연결에 더 많은 데이터가 있을때까지 기다린다.
+- keepAliveTimeout까지 데이터를 사용할 수 없으면 연결을 종료하고 빈 스레드 풀에 저장된다.
 
