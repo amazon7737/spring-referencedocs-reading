@@ -13,3 +13,20 @@
 3. Tomcat에 내장된 `ServletWebServerApplicationContext` 가 초기화를 이루며 빈에서 활성화가 된다.
 4. `TomcatWebServer`가 실행이 완료된다.
 
+### TomcatWebServer
+
+- HTTP 요청이 들어올때, 먼저 OS레벨에서 TCP 연결을 받아들인다.
+- Apache 문서에 확인해보면, 
+
+<img width="636" height="244" alt="image" src="https://github.com/user-attachments/assets/a38d1cb7-c63c-45b3-b88e-9a09439062d1" />
+
+- SYN 패킷은 연결 시작 요청을 알린다. 초기 시퀀스 넘버(ISN, Initial Sequence Number)를 포함한다
+
+<img width="640" height="304" alt="image" src="https://github.com/user-attachments/assets/f1805801-1897-4263-8380-eaa01193d061" />
+
+- ACK 패킷은 요청이 제대로 수신되었음을 알린다. 서버는 SYN + ACK 패킷으로 응답한다.
+
+<img width="609" height="252" alt="image" src="https://github.com/user-attachments/assets/4b24d5da-9c2a-49f4-badf-00d3712cca9b" />
+
+- 클라이언트는 ACK 패킷을 보내서 연결을 완료한다.
+
