@@ -74,3 +74,6 @@
 
 - 클라이언트에게 요청을 받아, TCP 연결을 완료하고 Tomcat이 요청을 처리하는 과정을 살펴보았다. 다음은 워커 쓰레드가 요청을 받아 실제로 Spring 에서 어떤 흐름으로 작동하는지 알아보겠다.
 -> Spring MVC
+
+### Reference
+- https://netflixtechblog.com/tuning-tomcat-for-a-high-throughput-fail-fast-system-e4d7b2fc163f
