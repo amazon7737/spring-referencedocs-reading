@@ -55,7 +55,7 @@
 - accept된 연결을 내부적으로 해당 소켓을 WorkerThread에게 넘긴다.
 - WorkerThread는 소켓의 HTTP 요청 데이터를 읽고, 비즈니스 로직 실행을 담당한다.
 
-<img width="1202" height="678" alt="image" src="https://github.com/user-attachments/assets/bb32c9c3-d3a8-4fc9-bc3d-fb0d0bb75362" />
+<img width="1450" height="836" alt="image" src="https://github.com/user-attachments/assets/1ef87288-f4d4-4439-9d92-167e7acb156b" />
 
 - 워커 스레드는 연결에서 입력을 읽고, 요청을 처리하고, 클라이언트에 응답을 보내는 실제 작업을 수행한다.
 - 연결이 유지되지 않으면 연결을 종료하고 빈 스레드 풀에 저장된다.
