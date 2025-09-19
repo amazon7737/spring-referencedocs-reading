@@ -52,11 +52,10 @@
 <img width="1205" height="682" alt="image" src="https://github.com/user-attachments/assets/3592b847-88bc-4cc6-a8f8-a4f955b1f9c5" />
 
 - AcceptThread는 새롭게 들어온 연결을 `ServerSocket`을 통해 받는다.
-
+- accept된 연결을 내부적으로 해당 소켓을 WorkerThread에게 넘긴다.
 
 <img width="1450" height="836" alt="image" src="https://github.com/user-attachments/assets/1ef87288-f4d4-4439-9d92-167e7acb156b" />
 
-- accept된 연결을 내부적으로 해당 소켓을 WorkerThread에게 넘긴다.
 - WorkerThread는 소켓의 HTTP 요청 데이터를 읽고, 비즈니스 로직 실행을 담당한다.
   
 - 동작:
