@@ -30,3 +30,15 @@
 
 - 클라이언트는 ACK 패킷을 보내서 연결을 완료한다.
 
+<img width="776" height="462" alt="image" src="https://github.com/user-attachments/assets/ab362fdf-d5e9-4ed6-a27c-659488f5838b" />
+
+- OS 레벨에서 관리되는 TCP 미연결 큐는 ACK 패킷이 돌아오기를 대기하는 요청들이 모인다.
+
+<img width="1322" height="559" alt="image" src="https://github.com/user-attachments/assets/aa8303c1-68c2-4d61-adb9-cb9f1dc6d83e" />
+
+- TCP 연결이 완료된 요청은 애플리케이션이 사용할 수 있도록 완료된 연결 큐로 이동한다.
+
+<img width="1956" height="679" alt="image" src="https://github.com/user-attachments/assets/585ad2f0-8191-41e2-a8d6-8c9a8f5a1838" />
+
+- Tomcat의 수락자 스레드(Accept Thread)는 완료된 연결 대기열에서 연결을 수락한다.
+
