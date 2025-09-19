@@ -49,6 +49,12 @@
 - 사용가능하지 않은 경우, 활성 스레드 수가 maxThreads보다 작으면 워커 스레드를 생성한다.
 - 그렇지 않으면, 워커 스레드가 사용 가능해질때까지 기다린다.
 
+<img width="1205" height="682" alt="image" src="https://github.com/user-attachments/assets/3592b847-88bc-4cc6-a8f8-a4f955b1f9c5" />
+
+- AcceptThread는 새롭게 들어온 연결을 `ServerSocket`을 통해 받는다.
+- accept된 연결을 내부적으로 해당 소켓을 WorkerThread에게 넘긴다.
+- WorkerThread는 소켓의 HTTP 요청 데이터를 읽고, 비즈니스 로직 실행을 담당한다.
+
 <img width="1202" height="678" alt="image" src="https://github.com/user-attachments/assets/bb32c9c3-d3a8-4fc9-bc3d-fb0d0bb75362" />
 
 - 워커 스레드는 연결에서 입력을 읽고, 요청을 처리하고, 클라이언트에 응답을 보내는 실제 작업을 수행한다.
